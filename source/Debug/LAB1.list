@@ -29,23 +29,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
  12 .comment      00000043  00000000  00000000  00020035  2**0
                   CONTENTS, READONLY
- 13 .debug_info   000028ad  00000000  00000000  00020078  2**0
+ 13 .debug_info   000028bb  00000000  00000000  00020078  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_abbrev 00000e3a  00000000  00000000  00022925  2**0
+ 14 .debug_abbrev 00000e3c  00000000  00000000  00022933  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_aranges 000003d8  00000000  00000000  00023760  2**3
+ 15 .debug_aranges 000003d8  00000000  00000000  00023770  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_rnglists 000002bf  00000000  00000000  00023b38  2**0
+ 16 .debug_rnglists 000002bf  00000000  00000000  00023b48  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_macro  0001550e  00000000  00000000  00023df7  2**0
+ 17 .debug_macro  0001550e  00000000  00000000  00023e07  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   000048f1  00000000  00000000  00039305  2**0
+ 18 .debug_line   000048f1  00000000  00000000  00039315  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    00079785  00000000  00000000  0003dbf6  2**0
+ 19 .debug_str    00079798  00000000  00000000  0003dc06  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .debug_frame  00000d58  00000000  00000000  000b737c  2**2
+ 20 .debug_frame  00000d58  00000000  00000000  000b73a0  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 0000005c  00000000  00000000  000b80d4  2**0
+ 21 .debug_line_str 0000005c  00000000  00000000  000b80f8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -180,8 +180,8 @@ int main(void)
  800020e:	e895 0007 	ldmia.w	r5, {r0, r1, r2}
  8000212:	c403      	stmia	r4!, {r0, r1}
  8000214:	8022      	strh	r2, [r4, #0]
-  void setNumberOnClock(int number) {
-	  HAL_GPIO_WritePin(GPIOA,pinStates[number + 1], SET);
+  void clearNumberOnClock(int number) {
+	  HAL_GPIO_WritePin(GPIOA, pinStates[number + 1], RESET);
   }
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
