@@ -1,5 +1,10 @@
-../Core/Src/main.c:89:8:displayNumber	11
-../Core/Src/main.c:64:5:main	2
-../Core/Src/main.c:210:6:SystemClock_Config	3
-../Core/Src/main.c:247:13:MX_GPIO_Init	1
-../Core/Src/main.c:281:6:Error_Handler	1
+../Core/Src/main.c:89:10:trafficInit	1
+../Core/Src/main.c:64:5:main	8
+../Core/Src/main.c:115:10:displayNumber1	11
+../Core/Src/main.c:210:10:displayNumber2	11
+../Core/Src/main.c:306:8:red_on	3
+../Core/Src/main.c:321:8:yellow_on	3
+../Core/Src/main.c:336:8:green_on	3
+../Core/Src/main.c:415:6:SystemClock_Config	3
+../Core/Src/main.c:452:13:MX_GPIO_Init	1
+../Core/Src/main.c:506:6:Error_Handler	1
