@@ -104,7 +104,9 @@ int main(void)
   	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, RESET);
   }
   /* USER CODE END 2 */
-
+  void setNumberOnClock(int number) {
+	  HAL_GPIO_WritePin(GPIOA,pinStates[number + 1], SET);
+  }
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   clearAllClock();
