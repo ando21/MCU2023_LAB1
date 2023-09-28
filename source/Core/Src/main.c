@@ -86,9 +86,9 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-  uint16_t pinStates[] = {GPIO_PIN_0,GPIO_PIN_4,GPIO_PIN_5,GPIO_PIN_6,GPIO_PIN_7
+  uint16_t pinStates[] = {GPIO_PIN_15,GPIO_PIN_4,GPIO_PIN_5,GPIO_PIN_6,GPIO_PIN_7
               ,GPIO_PIN_8,GPIO_PIN_9,GPIO_PIN_10,GPIO_PIN_11
-              ,GPIO_PIN_12,GPIO_PIN_13,GPIO_PIN_14,GPIO_PIN_15};
+              ,GPIO_PIN_12,GPIO_PIN_13,GPIO_PIN_14,GPIO_PIN_0};
   void clearAllClock() {
   	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, RESET);
   	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, RESET);
@@ -105,30 +105,47 @@ int main(void)
   }
   /* USER CODE END 2 */
   void setNumberOnClock(int number) {
-	  HAL_GPIO_WritePin(GPIOA,pinStates[number + 1], SET);
+	  HAL_GPIO_WritePin(GPIOA,pinStates[number], SET);
   }
 
   void clearNumberOnClock(int number) {
-	  HAL_GPIO_WritePin(GPIOA, pinStates[number + 1], RESET);
+	  HAL_GPIO_WritePin(GPIOA, pinStates[number], RESET);
   }
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  // Da scale gia tri quy doi 1h = 3600s thanh 36s de de quan sat
   clearAllClock();
-  int previousState = 0;
-  int nextState = 1;
-  int finalState = 12;
+  const int HOUR_TO_SECOND = 36;
+  int hour = 0;
+  int lastMinuteState = 0;
+  int hHand = 0;
+  int mHand = 0;
   while (1)
   {
-	  if (nextState > finalState) {
-		  HAL_GPIO_WritePin(GPIOA, pinStates[previousState], RESET);
-		  nextState = 1;
-		  previousState = 0;
+	  setNumberOnClock(hour);
+	  if (hHand <= HOUR_TO_SECOND) {
+		  if (mHand < 2) {
+			  setNumberOnClock(lastMinuteState);
+			  mHand++;
+		  } else {
+			  mHand = 0;
+			  clearNumberOnClock(lastMinuteState);
+			  if (lastMinuteState == 12) {
+				  lastMinuteState = 0;
+			  } else {
+				  lastMinuteState++;
+			  }
+		  }
+		  hHand++;
+	  } else {
+		  hHand = 0;
+		  clearNumberOnClock(hour);
+		  if (hour == 12) {
+			  hour = 0;
+		  } else {
+			  hour++;
+		  }
 	  }
-	  HAL_GPIO_WritePin(GPIOA, pinStates[previousState], RESET);
-	  HAL_GPIO_WritePin(GPIOA, pinStates[nextState], SET);
-	  /* USER CODE END WHILE */
-	  previousState = nextState;
-	  nextState = nextState + 1;
 	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
