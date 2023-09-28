@@ -89,10 +89,25 @@ int main(void)
   uint16_t pinStates[] = {GPIO_PIN_0,GPIO_PIN_4,GPIO_PIN_5,GPIO_PIN_6,GPIO_PIN_7
               ,GPIO_PIN_8,GPIO_PIN_9,GPIO_PIN_10,GPIO_PIN_11
               ,GPIO_PIN_12,GPIO_PIN_13,GPIO_PIN_14,GPIO_PIN_15};
+  void clearAllClock() {
+  	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, RESET);
+  	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, RESET);
+  	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, RESET);
+  	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, RESET);
+  	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, RESET);
+  	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, RESET);
+  	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, RESET);
+  	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, RESET);
+  	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, RESET);
+  	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_13, RESET);
+  	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_14, RESET);
+  	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, RESET);
+  }
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  clearAllClock();
   int previousState = 0;
   int nextState = 1;
   int finalState = 12;
