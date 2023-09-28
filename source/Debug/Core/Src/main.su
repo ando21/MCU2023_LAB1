@@ -1,8 +1,5 @@
-../Core/Src/main.c:89:9:red_ON	16	static
-../Core/Src/main.c:64:5:main	24	static
-../Core/Src/main.c:106:10:yellow_ON	16	static
-../Core/Src/main.c:123:10:green_ON	16	static
-../Core/Src/main.c:139:10:trafficLightInit	16	static
-../Core/Src/main.c:201:6:SystemClock_Config	72	static
-../Core/Src/main.c:238:13:MX_GPIO_Init	32	static
-../Core/Src/main.c:272:6:Error_Handler	4	static,ignoring_inline_asm
+../Core/Src/main.c:89:8:displayNumber	16	static
+../Core/Src/main.c:64:5:main	16	static
+../Core/Src/main.c:210:6:SystemClock_Config	72	static
+../Core/Src/main.c:247:13:MX_GPIO_Init	32	static
+../Core/Src/main.c:281:6:Error_Handler	4	static,ignoring_inline_asm
